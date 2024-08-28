@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,8 +64,22 @@ public class ForecastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
+        FrameLayout view = (FrameLayout) inflater.inflate(R.layout.fragment_forecast, container, false);
         view.setBackgroundColor(Color.rgb(255, 248, 232));
+
+        LinearLayout linearLayout = new LinearLayout(view.getContext());
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        TextView textView = new TextView(view.getContext());
+        String text = "Thursday";
+        textView.setText(text);
+
+        ImageView imageView = new ImageView(this.getContext());
+        imageView.setImageResource(R.drawable.day_clear);
+
+        view.addView(linearLayout);
+
+        linearLayout.addView(textView);
+        linearLayout.addView(imageView);
         return view;
     }
 }

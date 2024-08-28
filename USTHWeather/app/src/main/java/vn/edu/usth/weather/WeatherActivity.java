@@ -11,14 +11,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class WeatherActivity extends AppCompatActivity {
 
-    ForecastFragment forecastFragment = new ForecastFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("CreateApplication", "onCreate() is being executed!");
         super.onCreate(savedInstanceState);
 
+        ForecastFragment forecastFragment = new ForecastFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.main, forecastFragment).commit();
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_weather);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
