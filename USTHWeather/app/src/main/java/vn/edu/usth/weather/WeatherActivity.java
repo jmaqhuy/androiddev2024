@@ -18,8 +18,8 @@ public class WeatherActivity extends AppCompatActivity {
         Log.i("CreateApplication", "onCreate() is being executed!");
         super.onCreate(savedInstanceState);
 
-        ForecastFragment forecastFragment = new ForecastFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.main, forecastFragment).commit();
+//        ForecastFragment forecastFragment = new ForecastFragment();
+//        getSupportFragmentManager().beginTransaction().add(R.id.main, forecastFragment).commit();
 
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_weather);
