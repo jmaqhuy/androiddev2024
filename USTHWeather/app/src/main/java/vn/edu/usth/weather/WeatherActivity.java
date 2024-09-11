@@ -3,6 +3,8 @@ package vn.edu.usth.weather;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.appcompat.widget.Toolbar;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -18,8 +20,10 @@ public class WeatherActivity extends AppCompatActivity {
         Log.i("CreateApplication", "onCreate() is being executed!");
         super.onCreate(savedInstanceState);
 
-//        ForecastFragment forecastFragment = new ForecastFragment();
-//        getSupportFragmentManager().beginTransaction().add(R.id.main, forecastFragment).commit();
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+//        getSupportActionBar().setTitle("USTH Weather");
 
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_weather);
@@ -29,6 +33,7 @@ public class WeatherActivity extends AppCompatActivity {
             return insets;
         });
     }
+
 
     @Override
     protected void onStart() {

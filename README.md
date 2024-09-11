@@ -12,5 +12,5 @@ Student Info
 
 * Name: *Nguyen Quoc Huy*
 * ID: *BA12-089*
-* Group ID: *Your Group ID here*
-* Project Name: *Your Project Name here*
+* Group ID: *11*
+* Project Name: *Github Browser*
