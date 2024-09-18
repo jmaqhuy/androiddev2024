@@ -44,7 +44,7 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
 
-    @Override
+    @Override   
     protected void onStart() {
         Log.i("StartApplication", "onStart() is being executed!");
         super.onStart();

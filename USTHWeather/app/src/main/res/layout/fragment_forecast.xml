@@ -17,15 +17,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/day1"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mon"
+                android:text="@string/monday"
                 android:textSize="25sp" />
 
             <ImageView
-                android:id="@+id/imageView"
                 android:layout_width="20dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -39,18 +38,16 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/temp_26_27C" />
 
                 <TextView
-                    android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/sunny" />
             </LinearLayout>
 
         </LinearLayout>
@@ -65,15 +62,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/day2"
                 android:layout_width="24dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tue"
+                android:text="@string/tuesday"
                 android:textSize="25sp" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/weather_day2"
                 android:layout_width="20dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -87,18 +84,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/temp_day2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/temp_23_24C" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/des_day2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/rain_thunder" />
             </LinearLayout>
 
         </LinearLayout>
@@ -113,15 +110,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/day3"
                 android:layout_width="24dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Wed"
+                android:text="@string/wednesday"
                 android:textSize="25sp" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/weather_day3"
                 android:layout_width="20dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -135,18 +132,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/temp_day3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/temp_22_23C" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/des_day3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/rain_thunder" />
             </LinearLayout>
 
         </LinearLayout>
@@ -161,15 +158,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/day4"
                 android:layout_width="24dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Thu"
+                android:text="@string/thursday"
                 android:textSize="25sp" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/weather_day4"
                 android:layout_width="20dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -183,18 +180,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/temp_day4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/temp_22_23C" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/des_day4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/rain_thunder" />
             </LinearLayout>
 
         </LinearLayout>
@@ -209,15 +206,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/day5"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Fri"
+                android:text="@string/friday"
                 android:textSize="25sp" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/weather_day5"
                 android:layout_width="20dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -231,18 +228,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/temp_day5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/temp_21_22C" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/des_day5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/snow_thunder" />
             </LinearLayout>
 
         </LinearLayout>
@@ -257,15 +254,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/day6"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sat"
+                android:text="@string/saturday"
                 android:textSize="25sp" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/weather_day6"
                 android:layout_width="20dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -279,18 +276,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/temp_day6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/temp_23_24C" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/des_day6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/sunny" />
             </LinearLayout>
 
         </LinearLayout>
@@ -305,15 +302,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/day7"
                 android:layout_width="24dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sun"
+                android:text="@string/sunday"
                 android:textSize="25sp" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/weather_day7"
                 android:layout_width="20dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -327,18 +324,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/temp_day7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/temp_23_24C" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="@string/rain_thunder" />
             </LinearLayout>
 
         </LinearLayout>
