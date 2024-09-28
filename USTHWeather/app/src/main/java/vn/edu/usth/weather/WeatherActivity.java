@@ -1,5 +1,6 @@
 package vn.edu.usth.weather;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -15,7 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 public class WeatherActivity extends AppCompatActivity {
-
+    private MediaPlayer mediaPlayer;
 
 
     @Override
@@ -25,6 +26,17 @@ public class WeatherActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+//        set music
+        mediaPlayer = MediaPlayer.create(this,R.raw.weatherforecast);
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                // Release resources after playback is complete
+                mediaPlayer.release();
+            }
+        });
+
+        mediaPlayer.start();
 
 
         EdgeToEdge.enable(this);
@@ -54,12 +66,17 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onResume() {
         Log.i("ResumeApplication", "onResume() is being executed!");
         super.onResume();
+
     }
 
     @Override
     protected void onPause() {
         Log.i("PauseApplication", "onPause() is being executed!");
         super.onPause();
+        if (mediaPlayer != null){
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+        }
     }
 
     @Override
@@ -72,5 +89,8 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onDestroy() {
         Log.i("DestroyApplication", "onDestroy() is being executed!");
         super.onDestroy();
+        if (mediaPlayer != null){
+            mediaPlayer.release();
+        }
     }
 }
