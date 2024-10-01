@@ -3,6 +3,8 @@ package vn.edu.usth.weather;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class WeatherActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
+    private Handler handler;
 
 
     @Override
@@ -43,6 +46,7 @@ public class WeatherActivity extends AppCompatActivity {
         });
 
         mediaPlayer.start();
+        handler = new Handler(Looper.getMainLooper());
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -59,6 +63,21 @@ public class WeatherActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(pager);
     }
 
+    private void NetworkSimulator(){
+        new Thread( ()-> {
+            try {
+                Thread.sleep(3000);
+            } catch (Exception e){
+                Log.i("Thread Error", "There is Thread error in NetworkSimulator");
+            }
+            handler.post(() ->
+                    Toast.makeText(WeatherActivity.this, "Refresh Completed", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        ).start();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
@@ -71,6 +90,7 @@ public class WeatherActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.refresh){
             Log.i("Refresh", "Refresh Homepage Button clicked");
             Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show();
+            NetworkSimulator();
             return true;
         }
         if (item.getItemId() == R.id.setting){
