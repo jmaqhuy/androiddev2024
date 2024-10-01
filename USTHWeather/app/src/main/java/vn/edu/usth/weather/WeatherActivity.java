@@ -1,9 +1,14 @@
 package vn.edu.usth.weather;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
@@ -23,15 +28,16 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("CreateApplication", "onCreate() is being executed!");
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_weather);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        set music
+
         mediaPlayer = MediaPlayer.create(this,R.raw.weatherforecast);
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                // Release resources after playback is complete
                 mediaPlayer.release();
             }
         });
@@ -39,8 +45,6 @@ public class WeatherActivity extends AppCompatActivity {
         mediaPlayer.start();
 
 
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_weather);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -55,8 +59,30 @@ public class WeatherActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(pager);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
 
-    @Override   
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.refresh){
+            Log.i("Refresh", "Refresh Homepage Button clicked");
+            Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (item.getItemId() == R.id.setting){
+            Intent refIntent = new Intent(this, PrefActivity.class);
+            startActivity(refIntent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onStart() {
         Log.i("StartApplication", "onStart() is being executed!");
         super.onStart();
