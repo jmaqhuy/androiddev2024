@@ -1,7 +1,9 @@
 package vn.edu.usth.weather;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -24,7 +26,6 @@ import com.google.android.material.tabs.TabLayout;
 
 public class WeatherActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
-    private Handler handler;
 
 
     @Override
@@ -46,7 +47,6 @@ public class WeatherActivity extends AppCompatActivity {
         });
 
         mediaPlayer.start();
-        handler = new Handler(Looper.getMainLooper());
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -61,21 +61,27 @@ public class WeatherActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
         TabLayout tabLayout =(TabLayout) findViewById(R.id.tab);
         tabLayout.setupWithViewPager(pager);
+
+
     }
 
     private void NetworkSimulator(){
-        new Thread( ()-> {
-            try {
-                Thread.sleep(3000);
-            } catch (Exception e){
-                Log.i("Thread Error", "There is Thread error in NetworkSimulator");
+        AsyncTask<String, Integer, Bitmap> task = new AsyncTask<String, Integer, Bitmap>() {
+            @Override
+            protected Bitmap doInBackground(String... params) {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    Toast.makeText(WeatherActivity.this, "Refresh Error", Toast.LENGTH_SHORT).show();
+                }
+                return null;
             }
-            handler.post(() ->
-                    Toast.makeText(WeatherActivity.this, "Refresh Completed", Toast.LENGTH_SHORT).show()
-            );
-        }
-
-        ).start();
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                Toast.makeText(WeatherActivity.this, "Refresh Network Completed", Toast.LENGTH_SHORT).show();
+            }
+        };
+        task.execute();
     }
 
     @Override
