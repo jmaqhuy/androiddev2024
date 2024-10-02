@@ -2,6 +2,7 @@ package vn.edu.usth.weather;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,13 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 
 public class WeatherActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
@@ -67,21 +76,46 @@ public class WeatherActivity extends AppCompatActivity {
 
     private void NetworkSimulator(){
         AsyncTask<String, Integer, Bitmap> task = new AsyncTask<String, Integer, Bitmap>() {
+
+            @Override
+            protected void onPreExecute() {
+                // You can prepare the UI here (e.g., showing a progress bar)
+                Log.i("USTHWeather", "Starting download...");
+            }
+
             @Override
             protected Bitmap doInBackground(String... params) {
+                Bitmap bitmap;
                 try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    Toast.makeText(WeatherActivity.this, "Refresh Error", Toast.LENGTH_SHORT).show();
+                    URL url = new URL(params[0]);
+                    HttpURLConnection connection =
+                            (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setDoInput(true);
+                    connection.connect();
+                    int response = connection.getResponseCode();
+                    Log.i("USTHWeather", "The response is: " + response);
+                    InputStream is = connection.getInputStream();
+                    bitmap = BitmapFactory.decodeStream(is);
+                } catch (Exception e){
+                    bitmap = null;
                 }
-                return null;
+                return bitmap;
             }
+
             @Override
             protected void onPostExecute(Bitmap bitmap) {
-                Toast.makeText(WeatherActivity.this, "Refresh Network Completed", Toast.LENGTH_SHORT).show();
+                if (bitmap != null) {
+                    ImageView logo = (ImageView) findViewById(R.id.logo);
+                    logo.setImageBitmap(bitmap);
+                    Toast.makeText(WeatherActivity.this, "Image set successfully", Toast.LENGTH_SHORT).show();
+                    Log.i("USTHWeather", "Image set successfully.");
+                } else {
+                    Log.e("USTHWeather", "Failed to download the image.");
+                }
             }
         };
-        task.execute();
+        task.execute("https://cdn.haitrieu.com/wp-content/uploads/2022/11/Logo-Truong-Dai-hoc-Khoa-hoc-va-Cong-nghe-Ha-Noi-VN-France-University.png");
     }
 
     @Override
